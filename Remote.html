@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let Remote = function(id){
+            this.id = id;
+            this.getId = function(){
+                return id;
+            }
+            this.setId = function(id){
+                return this.id = id;
+            }
+            this.chanelControl = function(chanel, tv){
+                if(this.tv.status == true){
+                    this.tv.chanel = chanel;
+                }
+            }
+            this.volumeUp = function(index, tv){
+                if(this.tv.status == true){
+                    this.tv.volume += index;
+                }
+            }
+            this.volumeDown = function(index, tv){
+                if(this.tv.status == true){
+                    this.tv.volume -= index;
+                }
+            }
+            this.turnOnTV = function(tv){
+                return this.tv.status = true;
+            }
+            this.turnOffTV = function(tv){
+                return this.tv.status = false;
+            }
+            this.remoteConnectTV = function(tv){
+                return this.tv = tv;
+            }
+        }
+        let TV = function(chanel, volume){
+            this.chanel = chanel;
+            this.volume = volume;
+            this.status = status;
+            this.getChanel = function(){
+                return chanel;
+            }
+            this.setChanel = function(chanel){
+                return this.chanel = chanel;
+            }
+            this.getStatus = function(){
+                return this.status;
+            }
+            this.setStatus = function(status){
+                return this.status = status;
+            }
+            this.getVolume = function(){
+                return volume;
+            }
+            this.setVolume = function(volume){
+                return this.volume = volume;
+            }
+        }
+        let tv = new TV("Chanel 7", 70);
+        let remote = new Remote("Remode1");
+        remote.remoteConnectTV(tv);
+        remote.turnOnTV(tv);
+        console.log(tv.chanel);
+
+        remote.chanelControl("Chanel 3", tv);
+        console.log(tv.chanel);
+
+        remote.volumeUp(2, tv);
+        console.log(tv.volume);
+        
+        remote.turnOffTV(tv);
+        console.log(tv.status);
+    </script>
+</body>
+</html>
